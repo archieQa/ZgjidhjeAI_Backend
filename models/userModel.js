@@ -39,6 +39,10 @@ const createUser = async (email, username, password) => {
   }
 };
 
+const verifyPassword = async (inputPassword, storedPassword) => {
+  return await bcrypt.compare(inputPassword, storedPassword);
+};
+
 const findUserByEmail = async (email) => {
   const query = `SELECT * FROM users WHERE email = $1;`;
   try {
@@ -54,4 +58,5 @@ module.exports = {
   createUser,
   findUserByEmail,
   createUserTable,
+  verifyPassword,
 };

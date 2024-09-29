@@ -6,11 +6,12 @@ const bodyParser = require("body-parser");
 const passport = require("./utils/oauthStrategy"); // Import passport
 const authRoutes = require("./routes/authRoutes");
 const { pool } = require("./config/config");
+const cors = require("cors");
 
 // Middleware
 app.use(bodyParser.json());
 app.use(passport.initialize()); // Initialize passport
-
+app.use(cors());
 // Routes
 app.use("/auth", authRoutes);
 
